@@ -367,8 +367,6 @@ public class ContentManager {
                         if (dateOfPicture != null && dateOfPicture.after(dateCameraIntentStarted)) {
                             rotateXDegrees = myCursor.getInt(myCursor
                                     .getColumnIndexOrThrow(MediaStore.Images.ImageColumns.ORIENTATION));
-                        } else {
-                            photoUri = null;
                         }
                     }
                     if (myCursor.moveToNext() && !myCursor.isAfterLast()) {
