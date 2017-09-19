@@ -241,7 +241,9 @@ public class ContentManager {
         if (isStoragePermissionGranted(activity, fragment)) {
             if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
                 try {
-                    boolean setPreDefinedCameraUri = isSetPreDefinedCameraUri();
+
+
+                    boolean setPreDefinedCameraUri = Build.VERSION.SDK_INT >= 24 || isSetPreDefinedCameraUri();
 
                     dateCameraIntentStarted = new Date();
                     Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -294,6 +296,9 @@ public class ContentManager {
             setPreDefinedCameraUri = true;
         }
         if (manufacturer.contains("samsung") && model.contains("gt-n7000") && buildId.contains("imm76l")) { //TESTED
+            setPreDefinedCameraUri = true;
+        }
+        if (manufacturer.contains("samsung") && model.contains("sm-g9")) {
             setPreDefinedCameraUri = true;
         }
 
